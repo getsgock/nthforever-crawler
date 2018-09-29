@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipaylinks.webmagic.qichacha.dao.CompanyListQueneDAO">
+    <resultMap id="BaseResultMap" type="com.ipaylinks.webmagic.qichacha.model.CompanyQuene">
+        <id column="id" jdbcType="DECIMAL" property="id" />
+        <id column="quene_id" jdbcType="DECIMAL" property="queneId" />
+        <id column="url" jdbcType="VARCHAR" property="url" />
+        <id column="status" jdbcType="SMALLINT" property="status" />
+        <id column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <id column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+
+    <insert id="addFinalQuene" parameterType="com.ipaylinks.webmagic.qichacha.model.CompanyQuene">
+        insert into company_list (quene_id,url,status,create_time)
+        values
+        (
+        #{queneId,jdbcType=INTEGER},
+        #{url,jdbcType=VARCHAR},
+        0,
+        now()
+        )
+    </insert>
+
+    <select id="selectUndoList" parameterType="com.ipaylinks.webmagic.qichacha.model.CompanyQuene" resultMap="BaseResultMap">
+        select * from company_list
+        where status = 3 limit 0,5
+    </select>
+
+    <update id="updateCompanyQueneById" parameterType="INTEGER" >
+        update company_list
+        set status = 1,update_time = now()
+        where id = #{id}
+    </update>
+
+    <update id="updateCompanyQueneStatusFailureById" parameterType="INTEGER" >
+        update company_list
+        set status = 4,update_time = now()
+        where id = #{id}
+    </update>
+
+</mapper>

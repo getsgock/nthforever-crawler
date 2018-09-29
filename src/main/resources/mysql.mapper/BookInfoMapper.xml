@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipaylinks.webmagic.qidian.dao.BookInfoDAO">
+    <resultMap id="BaseResultMap" type="com.ipaylinks.webmagic.qidian.model.BookInfo">
+
+    </resultMap>
+
+    <insert id="insertBookInfo" parameterType="com.ipaylinks.webmagic.qidian.model.BookInfo">
+        insert into book_info (name,author)
+        values
+        (#{name,jdbcType=VARCHAR },#{author,jdbcType=VARCHAR })
+    </insert>
+</mapper>

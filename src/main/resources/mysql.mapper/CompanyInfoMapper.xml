@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipaylinks.webmagic.qichacha.dao.CompanyInfoDAO">
+    <resultMap id="BaseResultMap" type="com.ipaylinks.webmagic.qichacha.model.CompanyInfo">
+
+    </resultMap>
+
+    <insert id="addCompanyInfo" parameterType="com.ipaylinks.webmagic.qichacha.model.CompanyInfo">
+        insert into company_info (registration_id,company_name,oper,email,phone,create_time,
+        credit_num,registered_capital,create_date,company_type,company_status,`range`,address
+        )
+        values
+        (
+        #{registrationId,jdbcType=VARCHAR},
+        #{companyName,jdbcType=VARCHAR},
+        #{oper,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR},
+        now(),
+        #{creditNum,jdbcType=VARCHAR},
+        #{registeredCapital,jdbcType=VARCHAR},
+        #{createDate,jdbcType=VARCHAR},
+        #{companyType,jdbcType=VARCHAR},
+        #{companyStatus,jdbcType=VARCHAR},
+        #{range,jdbcType=VARCHAR},
+        #{address,jdbcType=VARCHAR}
+        )
+    </insert>
+</mapper>

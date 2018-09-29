@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 指定数据库连接信息的位置 -->
+    <properties resource="db.properties"></properties>
+
+
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="com.ipaylinks.webmagic.qichacha.util.HikariCPDataSourceFactory">
+                <!--<property name="driver" value="${jdbc.driverClassName}" />-->
+                <property name="jdbcUrl" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+
+    <mappers>
+        <!--注册BookMapper映射-->
+
+        <mapper resource="mysql.mapper/BookInfoMapper.xml"/>
+        <mapper resource="mysql.mapper/CompanyInfoMapper.xml"/>
+        <mapper resource="mysql.mapper/CompanyQueneMapper.xml"/>
+        <mapper resource="mysql.mapper/CompanyListQueneMapper.xml"/>
+    </mappers>
+</configuration>
